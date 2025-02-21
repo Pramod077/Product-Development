@@ -1,0 +1,9 @@
+import numpy as np
+import pandas as pd
+CP = pd.read_csv('E:\Pramod\data science revision/Issued_Construction_Permits_20241201.csv')
+Construction_permits= pd.DataFrame(CP)
+Permit_class_Commercial_Pivoted = Construction_permits.pivot_table(index = ['Applicant City', 'Work Class'], columns = 'Calendar Year Issued', values = 'Building Valuation', aggfunc = 'mean')
+Pivot = pd.DataFrame(Permit_class_Commercial_Pivoted)
+Pivot = Pivot.fillna(0)
+print(Pivot)
+print(Pivot.describe())
